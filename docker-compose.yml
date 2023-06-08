@@ -13,7 +13,7 @@ services:
   api:
     build: .
     ports:
-      - 8000:3000     # 8000 for local machine & 3000 for host machine
+      - 80:3000     # 8000 for local machine & 3000 for host machine
     environment:
       PORT: 3000
       MONGODB_URI: mongodb://mongo_db:27017
