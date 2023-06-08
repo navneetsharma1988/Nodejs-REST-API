@@ -2,7 +2,7 @@ FROM node:alpine3.18
 
 EXPOSE 3000
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
 COPY package*.json .
 
