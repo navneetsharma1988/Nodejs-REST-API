@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-app-rest-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node-rest
+  template:
+    metadata:
+      labels:
+        app: node-rest
+    spec:
+      containers:
+      - name: node-rest-container
+        image: iamnsharma/node-rest-api
+        ports:
+        - name: http
+          containerPort: 3000
+          protocol: TCP
