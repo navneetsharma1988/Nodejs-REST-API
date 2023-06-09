@@ -11,6 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 // Initialize DB
 require('./initDB')();
 
+app.get('/', (req, res) => {
+  console.log('Hi User', process.env.USER_NAME);
+  res.send(`Hi User, ${process.env.USER_NAME}`);
+});
+
 const ProductRoute = require('./Routes/Product.route');
 app.use('/products', ProductRoute);
 

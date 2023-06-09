@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-rest-api-deployment
+  namespaces: iamnsharma-k8s
+spec:
+  selector:
+    matchLabels:
+      app: node-rest-api
+  template:
+    metadata:
+      labels:
+        app: node-rest-api
+    spec:
+      containers:
+      - name: node-rest-api
+        image: iamnsharma/node-rest-api
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - name: http
+            containerPort: 3000
+            protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-rest-lb
+  namespaces: iamnsharma-k8s
+spec:
+  type: LoadBalancer
+  selector:
+    app: node-rest-api
+  ports:
+  - port: 80
+    targetPort: 3000
+    protocol: TCP
+
