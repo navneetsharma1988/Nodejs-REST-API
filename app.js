@@ -1,6 +1,7 @@
 const express = require('express');
 const createError = require('http-errors');
 const dotenv = require('dotenv').config();
+const morgan = require('morgan');
 
 const app = express();
 
