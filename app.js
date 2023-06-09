@@ -12,6 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 // Initialize DB
 require('./initDB')();
 
+require('./initSecrets')();
+
 app.get('/', (req, res) => {
   console.log('Hi User', process.env.USER_NAME);
   res.send(`Hi User, ${process.env.USER_NAME}`);

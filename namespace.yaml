@@ -1,6 +1,7 @@
 apiVersion: v1
-kind: namespaces
+kind: Namespace
 metadata:
   name: iamnsharma-k8s
   labels:
     name: iamnsharma-k8s
+

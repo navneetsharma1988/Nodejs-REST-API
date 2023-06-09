@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: node-rest-api-deployment
-  namespaces: iamnsharma-k8s
+  namespace: iamnsharma-k8s
 spec:
   selector:
     matchLabels:
@@ -23,13 +23,16 @@ spec:
           - name: http
             containerPort: 3000
             protocol: TCP
+        envFrom:  
+          - configMapRef:
+              name: node-rest-api-settings
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: node-rest-lb
-  namespaces: iamnsharma-k8s
+  namespace: iamnsharma-k8s
 spec:
   type: LoadBalancer
   selector:
