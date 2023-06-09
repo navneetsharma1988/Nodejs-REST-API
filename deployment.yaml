@@ -4,6 +4,7 @@ metadata:
   name: node-rest-api-deployment
   namespace: iamnsharma-k8s
 spec:
+  replicas: 4
   selector:
     matchLabels:
       app: node-rest-api
@@ -26,6 +27,8 @@ spec:
         envFrom:  
           - configMapRef:
               name: node-rest-api-settings
+          - secretRef:
+              name: node-rest-api-secret-info
 
 ---
 apiVersion: v1

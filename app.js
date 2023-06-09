@@ -16,7 +16,8 @@ require('./initSecrets')();
 
 app.get('/', (req, res) => {
   console.log('Hi User', process.env.USER_NAME);
-  res.send(`Hi User, ${process.env.USER_NAME}`);
+  console.log('Hi User', process.env.DB_PASS);
+  res.send(`Hi User, ${process.env.USER_NAME}, ${process.env.DB_PASS}`);
 });
 
 const ProductRoute = require('./Routes/Product.route');
