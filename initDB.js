@@ -1,11 +1,14 @@
 const mongoose = require('mongoose');
 
 module.exports = () => {
+
+  const MONGODB_URI = `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGODB_IP}:${process.env.MONGODB_PORT}/${process.env.MONGODB_DB}?authSource=${process.env.MONGODB_AUTH_SOURCE}`
+
+  console.log('environment variables', process.env);
+  console.log('mongodb_uri', MONGODB_URI);
+
   mongoose
     .connect(process.env.MONGODB_URI, {
-      dbName: process.env.DB_NAME,
-      user: process.env.DB_USER,
-      pass: process.env.DB_PASS,
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false

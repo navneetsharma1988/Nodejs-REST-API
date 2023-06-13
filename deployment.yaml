@@ -4,7 +4,7 @@ metadata:
   name: node-rest-api-deployment
   namespace: iamnsharma-k8s
 spec:
-  replicas: 4
+  replicas: 3
   selector:
     matchLabels:
       app: node-rest-api
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: node-rest-api
-        image: iamnsharma/node-rest-api
+        image: iamnsharma/node-rest-api:v1
         resources:
           limits:
             memory: "128Mi"
@@ -44,4 +44,26 @@ spec:
   - port: 80
     targetPort: 3000
     protocol: TCP
+
+# ---
+# apiVersion: autoscaling/v2
+# kind: HorizontalPodAutoscaler
+# metadata:
+#   namespace: iamnsharma-k8s
+#   name: node-rest-api-deployment-autoscale
+# spec:
+#   scaleTargetRef:
+#     apiVersion: apps/v1
+#     kind: Deployment
+#     name: node-rest-api-deployment
+#   targetCPUUtilizationPercentage: 10
+#   minReplicas: 1
+#   maxReplicas: 4
+  # metrics:
+  # - type: Resource
+  #   resource:
+  #     name: cpu
+  #     target:
+  #       type: Utilization
+  #       averageUtilization: 10
 
