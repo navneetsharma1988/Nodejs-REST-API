@@ -8,7 +8,7 @@ module.exports = () => {
   console.log('mongodb_uri', MONGODB_URI);
 
   mongoose
-    .connect(process.env.MONGODB_URI, {
+    .connect(MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false
