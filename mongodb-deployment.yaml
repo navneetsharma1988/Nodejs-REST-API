@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongodb-deployment
-  namespace: iamnsharma-k8s
 spec:
   strategy:
     type: Recreate
