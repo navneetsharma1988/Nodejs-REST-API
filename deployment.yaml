@@ -15,11 +15,7 @@ spec:
     spec:
       containers:
       - name: node-rest-api
-        image: iamnsharma/node-rest-api:v1
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
+        image: iamnsharma/node-rest-api:v2
         ports:
           - name: http
             containerPort: 3000

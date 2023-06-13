@@ -8,4 +8,5 @@ data:
   MONGODB_PORT: "27017"
   MONGODB_DB: nagp
   MONGODB_AUTH_SOURCE: admin
+  PORT: "3000"
   USER_NAME: K8-dev_testuser

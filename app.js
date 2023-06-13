@@ -1,7 +1,10 @@
 const express = require('express');
 const createError = require('http-errors');
-const dotenv = require('dotenv').config();
 const morgan = require('morgan');
+
+if (process.env.NODE_ENV !== 'production') {
+  const dotenv = require('dotenv').config();
+}
 
 const app = express();
 
