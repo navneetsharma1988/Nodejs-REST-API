@@ -4,7 +4,8 @@ metadata:
   name: node-rest-api-settings
   namespace: iamnsharma-k8s
 data:
-  MONGODB_URI: mongodb://adminuser:password123@mongodb-service-ip:27017
-  DB_NAME: nagp
-  DB_USER: adminuser
+  MONGODB_HOST: mongodb-service-ip
+  MONGODB_PORT: "27017"
+  MONGODB_DB: nagp
+  MONGODB_AUTH_SOURCE: admin
   USER_NAME: K8-dev_testuser
