@@ -1,29 +1,30 @@
-const express = require('express');
-const createError = require('http-errors');
-const morgan = require('morgan');
+const express = require("express");
+const createError = require("http-errors");
+const morgan = require("morgan");
 
-if (process.env.NODE_ENV !== 'production') {
-  const dotenv = require('dotenv').config();
+if (process.env.NODE_ENV !== "production") {
+  const dotenv = require("dotenv").config();
 }
 
 const app = express();
 
-app.use(morgan('dev'));
+app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Initialize DB
-require('./initDB')();
+const connectDB = require("./initDB");
+connectDB();
 
-require('./initSecrets')();
+require("./initSecrets")();
 
-app.get('/', (req, res) => {
-  console.log('Hi User', process.env.USER_NAME);
+app.get("/", (req, res) => {
+  console.log("Hi User", process.env.USER_NAME);
   res.send(`Hi User, ${process.env.USER_NAME}`);
 });
 
-const ProductRoute = require('./Routes/Product.route');
-app.use('/products', ProductRoute);
+const ProductRoute = require("./Routes/Product.route");
+app.use("/products", ProductRoute);
 
 //404 handler and pass to error handler
 app.use((req, res, next) => {
@@ -33,7 +34,7 @@ app.use((req, res, next) => {
   next(err);
   */
   // You can use the above code if your not using the http-errors module
-  next(createError(404, 'Not found'));
+  next(createError(404, "Not found"));
 });
 
 //Error handler
@@ -42,13 +43,13 @@ app.use((err, req, res, next) => {
   res.send({
     error: {
       status: err.status || 500,
-      message: err.message
-    }
+      message: err.message,
+    },
   });
 });
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log('Server started on port ' + PORT + '...');
+  console.log("Server started on port " + PORT + "...");
 });

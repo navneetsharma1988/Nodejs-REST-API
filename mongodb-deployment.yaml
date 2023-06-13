@@ -4,11 +4,12 @@ metadata:
   name: mongodb-deployment
   namespace: iamnsharma-k8s
 spec:
+  strategy:
+    type: Recreate
   replicas: 1
   selector:
     matchLabels:
       app: mongodb
-  strategy: {}
   template:
     metadata:
       labels:
