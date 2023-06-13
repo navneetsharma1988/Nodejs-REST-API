@@ -6,7 +6,7 @@ const connectDB = async () => {
 
     console.log("environment variables", process.env);
 
-    const MONGODB_URL = `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGODB_HOST}:${process.env.MONGODB_PORT}/${process.env.MONGODB_DB}?authSource=${MONGODB_AUTH_SOURCE}`;
+    const MONGODB_URL = `mongodb://${process.env.MONGO_INITDB_ROOT_USERNAME}:${process.env.MONGO_INITDB_ROOT_PASSWORD}@${process.env.MONGODB_HOST}:${process.env.MONGODB_PORT}/${process.env.MONGODB_DB}?authSource=${process.env.MONGODB_AUTH_SOURCE}`;
 
     console.log("MONGODB_URL", MONGODB_URL);
 
