@@ -111,7 +111,28 @@ module.exports = {
     try {
       const results = await Product.find({}, { __v: 0 });
       if (results.length === 0) {
-        const products = require("../products.json");
+        const products = [
+          {
+            name: "iPhone 14 Pro Max",
+            price: 6500,
+          },
+          {
+            name: "MacBook Air Pro",
+            price: 10000,
+          },
+          {
+            name: "AirPods Pro",
+            price: 2500,
+          },
+          {
+            name: "Apple Watch Series 7",
+            price: 5000,
+          },
+          {
+            name: "iPad Pro",
+            price: 6000,
+          },
+        ];
         products.forEach(async (product) => {
           const newProduct = new Product(product);
           await newProduct.save();
