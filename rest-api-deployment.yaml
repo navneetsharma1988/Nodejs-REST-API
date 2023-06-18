@@ -5,6 +5,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: node-rest-api-secret-info
+  namespace: iamnsharma-k8s
 type: Opaque
 data:
     MONGO_INITDB_ROOT_PASSWORD: cGFzc3dvcmQxMjM=
@@ -15,6 +16,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: node-rest-api-settings
+  namespace: iamnsharma-k8s
 data:
   MONGODB_HOST: mongodb-service-ip
   MONGODB_PORT: "27017"
@@ -28,8 +30,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: node-rest-api-deployment
+  namespace: iamnsharma-k8s
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: node-rest-api
@@ -61,6 +64,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: node-rest-lb
+  namespace: iamnsharma-k8s
 spec:
   type: LoadBalancer
   selector:
