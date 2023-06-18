@@ -111,7 +111,7 @@ module.exports = {
     try {
       const results = await Product.find({}, { __v: 0 });
       if (results.length === 0) {
-        const products = require("./products.json");
+        const products = require("../products.json");
         products.forEach(async (product) => {
           const newProduct = new Product(product);
           await newProduct.save();
