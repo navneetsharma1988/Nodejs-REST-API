@@ -43,7 +43,7 @@ spec:
     spec:
       containers:
         - name: node-rest-api
-          image: iamnsharma/node-rest-api:v8
+          image: iamnsharma/node-rest-api:v10
           ports:
             - name: http
               containerPort: 3000
