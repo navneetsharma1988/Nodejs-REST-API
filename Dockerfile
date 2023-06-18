@@ -1,6 +1,5 @@
 FROM node:alpine3.18
-
-EXPOSE 3000
+ENV NODE_ENV=production
 
 WORKDIR /app
 
@@ -10,7 +9,7 @@ RUN npm ci
 
 COPY . .
 
-ENV NODE_ENV=production
+EXPOSE 3000
 
 CMD [ "npm", "start" ]
 
