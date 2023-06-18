@@ -14,8 +14,6 @@ app.use(express.urlencoded({ extended: true }));
 const connectDB = require("./initDB");
 connectDB();
 
-require("./initSecrets")();
-
 app.get("/", (req, res) => {
   const message = `Hi Welcome to the API Server, Please visit README.md for more info.`;
   res.send(message);
