@@ -17,8 +17,7 @@ connectDB();
 require("./initSecrets")();
 
 app.get("/", (req, res) => {
-  const ipAddress = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
-  const message = `Hi Welcome to the API Server, Please visit <a>http://${ipAddress}:3000/api/products</a> to see the products`;
+  const message = `Hi Welcome to the API Server, Please visit README.md for more info.`;
   res.send(message);
 });
 
