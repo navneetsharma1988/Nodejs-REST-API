@@ -1,47 +1,32 @@
-# RESTful API
+# NODE REST API
 
-This is a RESTful API example based on Node.js and MongoDB, following the **MVC pattern** i.e. Model ~~View~~ Controller.
+## This is a simple REST API app
 
-**Mongoose** is used for Database transactions which is an elegant solution to mongodb object modeling for node.js.
+## Source Code Repository - 
 
-The application is **production ready**, and can be used behind a Nginx reverse proxy securely.
+### Docker hub URL for images
 
----
+Node REST API - https://hub.docker.com/r/iamnsharma/node-rest-api
 
-#### To start setting up the project
+Mongo DB - https://hub.docker.com/_/mongo
 
-Step 1: Clone the repo
+### Deployment steps
 
-```bash
-git clone https://github.com/trulymittal/Nodejs-REST-API.git
-```
+1. Deploy `namespace.yaml` to create custom K8s namespace
+2. Deploy `mongodb-deployment.yaml` to deploy Database Service
+3. Deploy `rest-api-deployment.yaml` to deploy application
 
-Step 2: cd into the cloned repo and run:
+#### How to test
 
-```bash
-npm install
-```
+Use any REST Client like Postman or ThunderClient in VSCode to submit HTTP requests.
 
-Step 3: Put your credentials in the .env file.
+Endpoint - http://{hostName}:{port}/api/products
 
-```bash
-PORT=3000
-MONGODB_URI=YOUR MONGODB URI
-DB_NAME=DATABASE NAME OF YOUR CHOICE
-DB_USER=DATABASE USER
-DB_PASS=DATABASE USER PASSWORD 
-```
+deployed version - http://34.93.154.57/api/products 
 
-Step 4: Start the API by
+## Sample GET Request - 
+![Alt text](image.png)
 
-```bash
-npm start
-```
+## Sample POST Request - 
 
-## Author
-
-- [**Truly Mittal**](https://trulymittal.com)
-
-## License
-
-This project is licensed under the MIT License.
+![Alt text](image-1.png)
