@@ -15,16 +15,20 @@ spec:
         app: mongodb
     spec:
       containers:
-      - image: mongo
-        name: mongodb
-        args: ["--dbpath","/data/db"]
-        envFrom:
-        - secretRef:
-            name: mongodb-secrets
-        volumeMounts:
-        - name: "mongo-data-dir"
-          mountPath: "/data/db"
+        - image: mongo
+          name: mongodb
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          args: ["--dbpath", "/data/db"]
+          envFrom:
+            - secretRef:
+                name: mongodb-secrets
+          volumeMounts:
+            - name: "mongo-data-dir"
+              mountPath: "/data/db"
       volumes:
-      - name: "mongo-data-dir"
-        persistentVolumeClaim:
-          claimName: "mongodb-data"
+        - name: "mongo-data-dir"
+          persistentVolumeClaim:
+            claimName: "mongodb-data"

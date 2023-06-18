@@ -13,17 +13,21 @@ spec:
         app: node-rest-api
     spec:
       containers:
-      - name: node-rest-api
-        image: iamnsharma/node-rest-api:v7
-        ports:
-          - name: http
-            containerPort: 3000
-            protocol: TCP
-        envFrom:  
-          - configMapRef:
-              name: node-rest-api-settings
-          - secretRef:
-              name: node-rest-api-secret-info
+        - name: node-rest-api
+          image: iamnsharma/node-rest-api:v8
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: node-rest-api-settings
+            - secretRef:
+                name: node-rest-api-secret-info
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
 
 ---
 apiVersion: v1
@@ -35,29 +39,6 @@ spec:
   selector:
     app: node-rest-api
   ports:
-  - port: 80
-    targetPort: 3000
-    protocol: TCP
-
-# ---
-# apiVersion: autoscaling/v2
-# kind: HorizontalPodAutoscaler
-# metadata:
-#   namespace: iamnsharma-k8s
-#   name: node-rest-api-deployment-autoscale
-# spec:
-#   scaleTargetRef:
-#     apiVersion: apps/v1
-#     kind: Deployment
-#     name: node-rest-api-deployment
-#   targetCPUUtilizationPercentage: 10
-#   minReplicas: 1
-#   maxReplicas: 4
-  # metrics:
-  # - type: Resource
-  #   resource:
-  #     name: cpu
-  #     target:
-  #       type: Utilization
-  #       averageUtilization: 10
-
+    - port: 80
+      targetPort: 3000
+      protocol: TCP

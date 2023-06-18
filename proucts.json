@@ -1,0 +1,22 @@
+[
+    {
+        "name": "iPhone 14 Pro Max",
+        "price": 6500
+    },
+    {
+        "name": "MacBook Air Pro",
+        "price": 10000
+    },
+    {
+        "name": "AirPods Pro",
+        "price": 2500
+    },
+    {
+        "name": "Apple Watch Series 7",
+        "price": 5000
+    },
+    {
+        "name": "iPad Pro",
+        "price": 6000
+    }
+]

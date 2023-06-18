@@ -2,9 +2,7 @@ const express = require("express");
 const createError = require("http-errors");
 const morgan = require("morgan");
 
-if (process.env.NODE_ENV !== "production") {
-  const dotenv = require("dotenv").config();
-}
+const dotenv = require("dotenv").config();
 
 const app = express();
 
@@ -19,12 +17,13 @@ connectDB();
 require("./initSecrets")();
 
 app.get("/", (req, res) => {
-  console.log("Hi User", process.env.USER_NAME);
-  res.send(`Hi User, ${process.env.USER_NAME}`);
+  const ipAddress = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
+  const message = `Hi Welcome to the API Server, Please visit <a>http://${ipAddress}:3000/api/products</a> to see the products`;
+  res.send(message);
 });
 
 const ProductRoute = require("./Routes/Product.route");
-app.use("/products", ProductRoute);
+app.use("/api/products", ProductRoute);
 
 //404 handler and pass to error handler
 app.use((req, res, next) => {
