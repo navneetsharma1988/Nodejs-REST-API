@@ -8,8 +8,8 @@ metadata:
   namespace: iamnsharma-k8s
 type: Opaque
 data:
-    MONGO_INITDB_ROOT_PASSWORD: cGFzc3dvcmQxMjM=
-    MONGO_INITDB_ROOT_USERNAME: YWRtaW4=
+  MONGO_INITDB_ROOT_PASSWORD: cGFzc3dvcmQxMjM=
+  MONGO_INITDB_ROOT_USERNAME: YWRtaW4=
 ---
 # ConfigMap Deployment
 apiVersion: v1
@@ -43,7 +43,7 @@ spec:
     spec:
       containers:
         - name: node-rest-api
-          image: iamnsharma/node-rest-api:v11
+          image: iamnsharma/node-rest-api:v12
           ports:
             - name: http
               containerPort: 3000
@@ -53,10 +53,6 @@ spec:
                 name: node-rest-api-settings
             - secretRef:
                 name: node-rest-api-secret-info
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
 
 ---
 # Node REST API Service Deployment
